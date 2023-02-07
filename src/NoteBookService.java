@@ -71,10 +71,53 @@ public class NoteBookService implements ProductService{
     @Override
     public void processMenu() {
 
+        int select = -1;
+        while (select!=0){
+            System.out.println("1-NoteBook add");
+            System.out.println("2-NoteBook remove");
+            System.out.println("3-NoteBook list");
+            System.out.println("4-NoteBook list");
+            System.out.println("5-Filter by Sheet ");
+            System.out.println("Your choice: ");
+            select = scanner.nextInt();
+
+            switch (select){
+
+                case 0:
+                    System.out.println("You are redirected to the main menu");
+                    break;
+                case 1:
+                    addProduct();
+                case 2:
+                    removeProduct();
+                case 3:
+                    //listProduct();
+                case 4:
+                    System.out.println("Please enter the Sheet");
+                    String pub = scanner.nextLine();
+
+                default:
+                    System.out.println("Invalid Choice!");
+                    break;
+
+            }
+        }
     }
 
     @Override
     public void filterProduct(String filter) {
+
+            for (Notebook notebook : this.notebookList){
+
+                if(notebook.getSheet().equalsIgnoreCase(filter)){
+
+                    System.out.printf("%-2s | %-15s | %-15s | %-10s | %-7s | %-5s \n",
+                            notebook.getId(),notebook.getName(),notebook.getBrand(),notebook.getSheet(),notebook.getPrice(),notebook.getStock());
+
+                }
+
+
+            }
 
     }
 
@@ -89,10 +132,8 @@ public class NoteBookService implements ProductService{
             System.out.printf("%-2s | %-15s | %-15s | %-10s | %-7s | %-5s \n",
                     noteBook.getId(),noteBook.getName(),noteBook.getBrand(),noteBook.getSheet(),noteBook.getPrice(),noteBook.getStock());
 
-
-
-
         }
 
     }
+
 }
