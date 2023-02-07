@@ -23,17 +23,17 @@ public class BookService implements ProductService{
 
     @Override
     public void addProduct() {
-        System.out.print("Book Name: ");
+        scanner.nextLine();
+        System.out.println("Book Name: ");
         String bookName = scanner.nextLine();
-        System.out.print("Book Price: ");
-        scanner.nextLine(); //dummy
-        double bookPrice = scanner.nextDouble();
-        System.out.print("Stock: ");
-        int stock = scanner.nextInt();
-        System.out.print("Author Name: ");
+        System.out.println("Author Name: ");
         String authName = scanner.nextLine();
-        System.out.print("Publisher: ");
+        System.out.println("Publisher: ");
         String pub = scanner.nextLine();
+        System.out.println("Book Price: ");
+        double bookPrice = scanner.nextDouble();
+        System.out.println("Stock: ");
+        int stock = scanner.nextInt();
 
         Book newBook = new Book(this.bookList.get(bookList.size()-1).getId()+1,bookName,bookPrice,stock,authName,pub);
         this.bookList.add(newBook);
@@ -76,8 +76,7 @@ public class BookService implements ProductService{
             System.out.println("1-Book add");
             System.out.println("2-Book remove");
             System.out.println("3-Book list");
-            System.out.println("4-Book list");
-            System.out.println("5-Filter by publisher ");
+            System.out.println("4-Filter by publisher ");
             System.out.println("Your choice: ");
             select = scanner.nextInt();
 
@@ -88,14 +87,18 @@ public class BookService implements ProductService{
                     break;
                 case 1:
                     addProduct();
+                    break;
                 case 2:
                     removeProduct();
+                    break;
                 case 3:
                     listProduct();
+                    break;
                 case 4:
                     System.out.println("Please enter the publisher");
                     String pub = scanner.nextLine();
                     filterProduct(pub);
+                    break;
                 default:
                     System.out.println("Invalid Choice!");
                     break;
@@ -145,9 +148,9 @@ public class BookService implements ProductService{
         for (Book book : this.bookList){
 
             System.out.printf("%-2s | %-15s | %-15s | %-10s | %-7s | %-5s \n",
-                    book.getId(), book.getName(), book.getAuthorName(), book.getPublisher(), book.getPrice(),book.getStock());
+                    book.getId(), book.getName(), book.getAuthorName(), book.getPublisher(), book.getPrice(), book.getStock());
 
-
+            System.out.println("-----------------------------------------------------------------------------------------------------");
 
         }
 

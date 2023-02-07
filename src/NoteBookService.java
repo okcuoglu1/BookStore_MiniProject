@@ -18,17 +18,19 @@ public class NoteBookService implements ProductService{
 
     @Override
     public void addProduct() {
-        System.out.print("Notebook Name: ");
+        scanner.nextLine();
+        System.out.println("Notebook Name: ");
         String notebookName = scanner.nextLine();
-        System.out.print("Notebook Price: ");
-        scanner.nextLine(); //dummy
-        double notebookPrice = scanner.nextDouble();
-        System.out.print("Stock: ");
-        int stock = scanner.nextInt();
-        System.out.print("Brand Name: ");
+        System.out.println("Brand Name: ");
         String brandName = scanner.nextLine();
-        System.out.print("Publisher: ");
+        System.out.println("Notebook Price: ");
+        double notebookPrice = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.println("Sheet ");
         String sheet = scanner.nextLine();
+        System.out.println("Stock: ");
+        int stock = scanner.nextInt();
+
 
         Notebook newNoteBook = new Notebook(this.notebookList.get(notebookList.size()-1).getId(),notebookName,notebookPrice,stock,brandName,sheet);
         this.notebookList.add(newNoteBook);
@@ -76,8 +78,7 @@ public class NoteBookService implements ProductService{
             System.out.println("1-NoteBook add");
             System.out.println("2-NoteBook remove");
             System.out.println("3-NoteBook list");
-            System.out.println("4-NoteBook list");
-            System.out.println("5-Filter by Sheet ");
+            System.out.println("4-Filter by Sheet ");
             System.out.println("Your choice: ");
             select = scanner.nextInt();
 
@@ -88,13 +89,18 @@ public class NoteBookService implements ProductService{
                     break;
                 case 1:
                     addProduct();
+                    break;
                 case 2:
                     removeProduct();
+                    break;
                 case 3:
-                    //listProduct();
+                    listProduct();
+                    break;
                 case 4:
                     System.out.println("Please enter the Sheet");
                     String pub = scanner.nextLine();
+                    filterProduct(pub);
+                    break;
 
                 default:
                     System.out.println("Invalid Choice!");
@@ -132,6 +138,7 @@ public class NoteBookService implements ProductService{
             System.out.printf("%-2s | %-15s | %-15s | %-10s | %-7s | %-5s \n",
                     noteBook.getId(),noteBook.getName(),noteBook.getBrand(),noteBook.getSheet(),noteBook.getPrice(),noteBook.getStock());
 
+            System.out.println("---------------------------------------------------------------------------------------------------------");
         }
 
     }
