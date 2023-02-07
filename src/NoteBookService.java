@@ -1,4 +1,4 @@
-public class BookService implements ProductService{
+public class NoteBookService implements ProductService{
     @Override
     public void addProduct() {
 
