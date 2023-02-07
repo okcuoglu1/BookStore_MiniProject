@@ -71,6 +71,39 @@ public class BookService implements ProductService{
 
     @Override
     public void processMenu() {
+        int select = -1;
+        while (select!=0){
+            System.out.println("1-Book add");
+            System.out.println("2-Book remove");
+            System.out.println("3-Book list");
+            System.out.println("4-Book list");
+            System.out.println("5-Filter by publisher ");
+            System.out.println("Your choice: ");
+            select = scanner.nextInt();
+
+            switch (select){
+
+                case 0:
+                    System.out.println("You are redirected to the main menu");
+                    break;
+                case 1:
+                    addProduct();
+                case 2:
+                    removeProduct();
+                case 3:
+                    listProduct();
+                case 4:
+                    System.out.println("Please enter the publisher");
+                    String pub = scanner.nextLine();
+                    filterProduct(pub);
+                default:
+                    System.out.println("Invalid Choice!");
+                    break;
+
+            }
+
+        }
+
 
 
 
@@ -83,6 +116,17 @@ public class BookService implements ProductService{
 
     @Override
     public void filterProduct(String filter) {
+
+
+        for (Book book : this.bookList){
+
+            if(book.getPublisher().equalsIgnoreCase(filter)){
+                System.out.printf("%-2s | %-15s | %-15s | %-10s | %-7s | %-5s \n",
+                        book.getId(),book.getName(),book.getAuthorName(),book.getPublisher(),book.getPrice(),book.getStock());
+            }
+
+        }
+
 
 
 
