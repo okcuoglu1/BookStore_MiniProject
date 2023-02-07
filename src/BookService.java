@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class BookService implements ProductService{
+
+    Scanner scanner = new Scanner(System.in);
+
     List<Book> bookList = new ArrayList<>();
     public BookService(){
         Book book1 = new Book(1,"Hayvan Çiftliği",15.50,10,"George Orwell","Can");
@@ -17,18 +21,22 @@ public class BookService implements ProductService{
 
 
 
-
-
-
-
-
-
-
-
-
-
     @Override
     public void addProduct() {
+        System.out.print("Book Name: ");
+        String bookName = scanner.nextLine();
+        System.out.print("Book Price: ");
+        scanner.nextLine(); //dummy
+        double bookPrice = scanner.nextDouble();
+        System.out.print("Stock: ");
+        int stock = scanner.nextInt();
+        System.out.print("Author Name: ");
+        String authName = scanner.nextLine();
+        System.out.print("Publisher: ");
+        String pub = scanner.nextLine();
+        Book newBook = new Book(this.bookList.get(bookList.size()-1).getId()+1,bookName,bookPrice,stock,authName,pub);
+        this.bookList.add(newBook);
+
 
     }
 
