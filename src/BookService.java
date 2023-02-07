@@ -34,9 +34,10 @@ public class BookService implements ProductService{
         String authName = scanner.nextLine();
         System.out.print("Publisher: ");
         String pub = scanner.nextLine();
+
         Book newBook = new Book(this.bookList.get(bookList.size()-1).getId()+1,bookName,bookPrice,stock,authName,pub);
         this.bookList.add(newBook);
-
+        listProduct();
 
     }
 
@@ -60,10 +61,28 @@ public class BookService implements ProductService{
     @Override
     public void filterProduct(String filter) {
 
+
+
+
+
+
     }
 
     @Override
     public void listProduct() {
+
+        System.out.println("---------------------------------------------------------------------------------------------------------");
+        System.out.printf("%-2s | %-15s | %-15s | %-10s | %-7s | %-5s \n","ID","Book Name","Author Name","Publisher","Price","Stock");
+        System.out.println("---------------------------------------------------------------------------------------------------------");
+
+        for (Book book : this.bookList){
+
+            System.out.printf("%-2s | %-15s | %-15s | %-10s | %-7s | %-5s \n",
+                    book.getId(), book.getName(), book.getAuthorName(), book.getPublisher(), book.getPrice(),book.getStock());
+
+
+
+        }
 
     }
 }
