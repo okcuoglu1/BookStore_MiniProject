@@ -43,6 +43,29 @@ public class BookService implements ProductService{
 
     @Override
     public void removeProduct() {
+        System.out.print("Please enter the id: ");
+        int revId = scanner.nextInt();
+        boolean isExist = true;
+
+        for (Book book : this.bookList){
+
+            if(book.getId()==revId){
+
+                bookList.remove(book);
+                System.out.println("Book is removed");
+                listProduct();
+            }else{
+                isExist = false;
+            }
+
+            if(!isExist){
+
+                System.out.println("Book is not found! ");
+            }
+
+
+
+        }
 
     }
 

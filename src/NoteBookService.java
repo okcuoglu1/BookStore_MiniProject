@@ -39,6 +39,33 @@ public class NoteBookService implements ProductService{
     @Override
     public void removeProduct() {
 
+        System.out.print("Please enter the id: ");
+        int revId = scanner.nextInt();
+        boolean isExist = true;
+
+        for (Notebook notebook : this.notebookList){
+
+            if(notebook.getId()==revId){
+
+                notebookList.remove(notebook);
+                System.out.println("Notebook is removed");
+                listProduct();
+            }else{
+                isExist = false;
+            }
+
+            if(!isExist){
+
+                System.out.println("Notebook is not found! ");
+            }
+
+
+
+        }
+
+
+
+
     }
 
     @Override
